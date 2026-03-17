@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3efe7;
+  --foreground: #10222c;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(249, 246, 239, 0.96);
+  --border: rgba(16, 34, 44, 0.12);
+  --muted: #526872;
+  --accent: #d4ff5f;
+  --accent-ink: #1b2612;
+  --accent-strong: #6d8720;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Trebuchet MS", "Gill Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "SFMono-Regular", "Roboto Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Trebuchet MS", "Gill Sans", "Helvetica Neue", sans-serif;
+  background-image:
+    radial-gradient(circle at top left, rgba(212, 255, 95, 0.55), transparent 30%),
+    radial-gradient(circle at top right, rgba(31, 100, 124, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(243, 239, 231, 0.96));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(212, 255, 95, 0.65);
+  color: #0f1d24;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 1.75rem;
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 22px 60px rgba(16, 34, 44, 0.08);
+  padding: 1.5rem;
+}
+
+.primary-link,
+.secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  border-radius: 999px;
+  padding: 0 1.25rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.primary-link {
+  background: var(--foreground);
+  color: #f7f4ee;
+}
+
+.secondary-link {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.primary-link:hover,
+.secondary-link:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 1.25rem;
+  }
 }
